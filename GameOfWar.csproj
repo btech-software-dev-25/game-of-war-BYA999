@@ -1,10 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+namespace GameOfWar
+{
+    public class GameState
+    {
+        public Deck CardDeck { get; set; }
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+        public Deck PlayerDeck { get; set; }
 
-</Project>
+        public Deck ComputerDeck { get; set; }
+
+        public Deck TableDeck { get; set; }
+
+        public string Winner { get; set; }
+
+        public GameState()
+        {
+            Winner = "";
+            CardDeck = new Deck();
+            PlayerDeck = new Deck(isEmptyDeck: true);
+            ComputerDeck = new Deck(isEmptyDeck: true);
+            TableDeck = new Deck(isEmptyDeck: true);
+        }
+    }
+}

@@ -2,22 +2,49 @@ namespace GameOfWar
 {
     public class Card
     {
+        public string Suit { get; private set; }
 
-        // Create a string property Suit with a private setter
+        public int Rank { get; private set; }
 
+        public Card(string suit, int rank)
+        {
+            Suit = suit;
+            Rank = rank;
+        }
 
-        // Create an int property Rank with a private setter - values should range from 0 for a face value of 2 to 12 for an Ace
+        public static bool operator >(Card left, Card right)
+        {
+            return left.Rank > right.Rank;
+        }
 
+        public static bool operator <(Card left, Card right)
+        {
+            return left.Rank < right.Rank;
+        }
 
-        // Create a public constructor that takes suit and rank as arguments and assigns them to Suit and Rank
+        public string RankString()
+        {
+            if (Rank <= 8)
+            {
+                return (Rank + 2).ToString();
+            }
 
+            if (Rank == 9)
+            {
+                return "Jack";
+            }
 
-        // Overload the > operator to compare two cards by rank
+            if (Rank == 10)
+            {
+                return "Queen";
+            }
 
+            if (Rank == 11)
+            {
+                return "King";
+            }
 
-        // Overload the < operator to compare two cards by rank
-
-
-        // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
+            return "Ace";
+        }
     }
 }
